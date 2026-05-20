@@ -61,19 +61,34 @@ npm run dev
 
 The app will be running at `http://localhost:5173`
 
-## Deploying on Railway
+## Deployment
 
-1. Push your code to GitHub (make sure `.env` is in `.gitignore`)
+### Backend — Railway
+
+The backend is deployed on Railway.
+
+1. Push your code to GitHub (`.env` is in `.gitignore`)
 2. Go to [Railway](https://railway.app) and create a new project
-3. Connect your GitHub repo
+3. Connect your GitHub repo, set root directory to `backend`
 4. Add these environment variables in Railway dashboard:
    - `MONGO_URI` — your MongoDB Atlas connection string
    - `JWT_SECRET` — any random string
    - `NODE_ENV` — `production`
-   - `PORT` — `5000`
-5. Set the build command to: `cd frontend && npm install && npm run build && cd ../backend && npm install`
-6. Set the start command to: `cd backend && node server.js`
-7. Deploy and your app will be live
+   - `FRONTEND_URL` — your Vercel frontend URL (e.g. `https://taskflow-team.vercel.app`)
+5. Railway will auto-detect Node.js and run `npm start`
+
+Live backend: `https://taskmanager-production-5407.up.railway.app`
+
+### Frontend — Vercel
+
+The frontend is deployed on Vercel.
+
+1. Go to [Vercel](https://vercel.app) and import your GitHub repo
+2. Set root directory to `frontend`
+3. Framework preset: Vite
+4. Add this environment variable in Vercel dashboard:
+   - `VITE_API_URL` — `https://taskmanager-production-5407.up.railway.app/api`
+5. Deploy
 
 ## Project Structure
 
